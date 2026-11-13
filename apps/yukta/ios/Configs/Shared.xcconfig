@@ -1,0 +1,5 @@
+// Shared.xcconfig
+// Non-secret configuration shared across environments. Committed to git.
+
+SWIFT_VERSION = 5.9
+IPHONEOS_DEPLOYMENT_TARGET = 17.0

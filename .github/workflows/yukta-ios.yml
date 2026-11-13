@@ -1,0 +1,67 @@
+name: Yukta iOS CI
+
+# YuktaKit (the scoring engine) has no dependencies, so its tests run on Linux in
+# seconds on every change. The simulator build runs on macOS only for non-draft pull
+# requests that touch app code. Public repos get hosted runners free; the path filter
+# keeps them quick anyway.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/yukta/**'
+      - '.github/workflows/yukta-ios.yml'
+  pull_request:
+    paths:
+      - 'apps/yukta/**'
+      - '.github/workflows/yukta-ios.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: yukta-ios-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  HOMEBREW_NO_AUTO_UPDATE: "1"
+
+jobs:
+  kit:
+    name: Scoring tests (YuktaKit)
+    runs-on: ubuntu-latest
+    container: swift:5.10
+    defaults:
+      run:
+        working-directory: apps/yukta/ios/YuktaKit
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        run: swift test
+
+  build:
+    name: Build (iOS Simulator)
+    needs: kit
+    runs-on: macos-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.draft == false)
+    defaults:
+      run:
+        working-directory: apps/yukta/ios
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+      - name: Generate project
+        run: |
+          brew install xcodegen
+          cp Configs/Debug.xcconfig.template Configs/Debug.xcconfig
+          cp Configs/Release.xcconfig.template Configs/Release.xcconfig
+          xcodegen generate
+      - name: Build
+        run: |
+          xcodebuild build -quiet \
+            -project Yukta.xcodeproj -scheme Yukta -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO

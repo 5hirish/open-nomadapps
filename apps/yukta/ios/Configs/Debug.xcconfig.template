@@ -1,0 +1,7 @@
+// Debug.xcconfig
+// Copy to Debug.xcconfig (gitignored). This repo is public: your signing
+// identity goes here, never in project.yml.
+
+#include "Shared.xcconfig"
+
+DEVELOPMENT_TEAM =
