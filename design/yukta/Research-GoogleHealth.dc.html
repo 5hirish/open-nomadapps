@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Research: Google Health UX critique</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0B7A5E}a:hover{color:#075C46}
+</style>
+</helmet>
+<div style="width: 1680px; height: 1960px; box-sizing: border-box; padding: 48px 36px; background: #F4F4F6; color: #1C1C1E; font-family: Inter, -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; gap: 36px;">
+
+  <header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 1040px;">
+      <span style="font-size: 14px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: #5E5E63;">Research · Competitor UX review · November 2026</span>
+      <h1 style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 700;">Google Health shows twenty numbers and answers no question</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.45; color: #3A3A3C;">The Fitbit app's successor (since 19 May 2026), reviewed as Yukta's target user would use it: an iPhone owner with a Fitbit Air who is losing weight and wants to know if they are on track, and what to change.</p>
+    </div>
+    <div style="display: flex; gap: 12px; flex-shrink: 0;">
+      <div style="background: #FFFFFF; border-radius: 14px; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; min-width: 150px;">
+        <span style="font-size: 28px; font-weight: 700;">3.65</span>
+        <span style="font-size: 13px; color: #5E5E63;">Google Play rating after the switch</span>
+      </div>
+      <div style="background: #FFFFFF; border-radius: 14px; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; min-width: 150px;">
+        <span style="font-size: 28px; font-weight: 700;">39</span>
+        <span style="font-size: 13px; color: #5E5E63;">fixes on Google's public roadmap</span>
+      </div>
+      <div style="background: #FFFFFF; border-radius: 14px; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; min-width: 150px;">
+        <span style="font-size: 28px; font-weight: 700;">$9.99</span>
+        <span style="font-size: 13px; color: #5E5E63;">a month for the AI coach</span>
+      </div>
+    </div>
+  </header>
+
+  <div style="display: flex; gap: 20px; align-items: center; font-size: 13px; color: #3A3A3C;">
+    <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 20px; height: 20px; border-radius: 10px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center;">1</span>Problem</span>
+    <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 20px; height: 20px; border-radius: 10px; background: #0B7A5E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center;">G</span>Worth keeping</span>
+    <span>Screens are schematic redraws of the shipping app, simplified, with personal numbers removed. Not screenshots.</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px;">
+
+    <section aria-label="Screen 1: Health status" style="display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600;">1 · Health status (home)</h2>
+      <div aria-hidden="true" style="position: relative; height: 560px; border-radius: 28px; background: #151518; padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; color: #E5E5EA; font-size: 11px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 4px;">
+          <span style="background: #2C2C33; border-radius: 10px; padding: 4px 8px;">device 18%</span>
+          <span style="font-size: 15px; font-weight: 600;">Premium</span>
+          <span style="width: 24px; height: 24px; border-radius: 12px; background: #3A3A44;"></span>
+        </div>
+        <span style="font-size: 14px; font-weight: 600;">Health status</span>
+        <div style="background: #24242A; border-radius: 14px; padding: 12px; height: 74px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px;">
+          <span>Vitals</span><span style="font-size: 18px; font-weight: 600;">5 of 5</span><span style="background: #1E4D2B; color: #9FE0B0; border-radius: 8px; padding: 1px 6px; align-self: flex-start;">In range</span>
+        </div>
+        <span style="font-size: 14px; font-weight: 600;">Key metrics</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; flex-grow: 1;">
+          <div style="background: #24242A; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 4px;"><span>Weight</span><span style="font-size: 15px; font-weight: 600;">X kg</span><span style="height: 34px; border-bottom: 1px solid #5A6A8A; position: relative;"><span style="position: absolute; left: 30%; top: 14px; width: 4px; height: 4px; border-radius: 2px; background: #8AA4FF;"></span></span><span style="background: #2C2C33; border-radius: 8px; padding: 1px 6px; align-self: flex-start;">X kg above goal</span></div>
+          <div style="background: #24242A; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 4px;"><span>Energy burned</span><span style="font-size: 15px; font-weight: 600;">3.155 cal</span><span style="display: flex; gap: 3px; align-items: flex-end; height: 34px;"><span style="flex: 1; height: 70%; background: #2BC4B4; border-radius: 4px;"></span><span style="flex: 1; height: 75%; background: #2BC4B4; border-radius: 4px;"></span><span style="flex: 1; height: 100%; background: #148F82; border-radius: 4px;"></span><span style="flex: 1; height: 65%; background: #2BC4B4; border-radius: 4px;"></span><span style="flex: 1; height: 100%; background: #148F82; border-radius: 4px;"></span></span><span style="background: #1E4D2B; color: #9FE0B0; border-radius: 8px; padding: 1px 6px; align-self: flex-start;">Goal met</span></div>
+          <div style="background: #24242A; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 4px;"><span>Calorie intake</span><span style="font-size: 15px; font-weight: 600;">No data</span></div>
+          <div style="background: #24242A; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 4px;"><span>Carbs</span><span style="font-size: 15px; font-weight: 600;">No data</span></div>
+        </div>
+        <span style="position: absolute; right: 18px; bottom: 74px; background: #B8CCFF; color: #10224D; border-radius: 16px; padding: 10px 14px; font-weight: 600; font-size: 12px;">Ask coach</span>
+        <div style="display: flex; justify-content: space-around; padding: 8px 0 2px; border-top: 1px solid #2C2C33; color: #AEAEB2;"><span>Today</span><span>Fitness</span><span>Sleep</span><span style="color: #FFFFFF;">Health</span></div>
+        <span style="position: absolute; left: 116px; top: 2px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">7</span>
+        <span style="position: absolute; right: 18px; top: 96px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">4</span>
+        <span style="position: absolute; left: 4px; top: 232px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">1</span>
+        <span style="position: absolute; left: 100px; top: 290px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">5</span>
+        <span style="position: absolute; right: 10px; top: 234px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">2</span>
+        <span style="position: absolute; left: 100px; top: 400px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">3</span>
+        <span style="position: absolute; right: 8px; bottom: 112px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">6</span>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.4;">
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>1 · Energy balance split in three</strong><span style="background: #FCE8E6; color: #8C1D18; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">High</span></span><span style="color: #3A3A3C;">Weight, burned and intake never meet. That relationship is the whole job for someone losing weight.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>2 · Watch estimate shown as exact, then celebrated</strong><span style="background: #FCE8E6; color: #8C1D18; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">High</span></span><span style="color: #3A3A3C;">Wrist calorie burn errs by 20–30% or more, yet gets a precise number, "cal" for kcal, a decimal separator that reads as 3 calories, and "Goal met" badges.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>3 · "No data" dead ends</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">Half the grid says nothing, with no "log food" or "connect an app".</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>4 · A big card for one reassurance</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">"Vitals 5 of 5" never says which five.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>5 · Distance, not direction</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">"X kg above goal" over a one-dot chart: no trend, no rate, framed as a shortfall.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>6 · Coach button covers content</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">The paid feature floats over data on every screen.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>7 · The header is a paid brand</strong><span style="background: #E9E9EE; color: #3A3A3C; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Low</span></span><span style="color: #3A3A3C;">"Premium" sits where navigation belongs.</span></li>
+      </ol>
+    </section>
+
+    <section aria-label="Screen 2: Sleep metrics" style="display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600;">2 · Sleep key metrics</h2>
+      <div aria-hidden="true" style="position: relative; height: 560px; border-radius: 28px; background: #1A1622; padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; color: #E5E5EA; font-size: 11px;">
+        <div style="display: flex; justify-content: center; padding: 6px 4px;"><span style="font-size: 15px; font-weight: 600;">Premium</span></div>
+        <span style="font-size: 14px; font-weight: 600;">Key metrics</span>
+        <div style="background: #24242A; border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center;"><div style="display: flex; flex-direction: column; gap: 4px;"><span>Total sleep duration</span><span style="font-size: 18px; font-weight: 600;">[short]</span><span style="color: #AEAEB2;">Today</span></div><span style="width: 90px; height: 28px; border-bottom: 2px dotted #B79BFF;"></span></div>
+        <div style="background: #24242A; border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center;"><div style="display: flex; flex-direction: column; gap: 4px;"><span>Main sleep</span><span style="font-size: 14px; font-weight: 600;">[bed]–[wake]</span><span style="color: #AEAEB2;">Today · Out of range</span></div><span style="display: flex; gap: 6px;"><span style="width: 6px; height: 26px; background: #F5B83D; border-radius: 3px;"></span><span style="width: 6px; height: 26px; background: #F5B83D; border-radius: 3px;"></span><span style="width: 6px; height: 26px; background: #4CD07D; border-radius: 3px;"></span><span style="width: 6px; height: 26px; background: #F5B83D; border-radius: 3px;"></span></span></div>
+        <div style="background: #24242A; border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center;"><div style="display: flex; flex-direction: column; gap: 4px;"><span>REM sleep</span><span style="font-size: 18px; font-weight: 600;">[time]</span><span style="color: #AEAEB2;">Today · Above range</span></div><span style="width: 90px; height: 24px; background: #23402E; border-radius: 6px;"></span></div>
+        <div style="background: #24242A; border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center;"><div style="display: flex; flex-direction: column; gap: 4px;"><span>Deep sleep</span><span style="font-size: 18px; font-weight: 600;">[time]</span><span style="color: #AEAEB2;">Today · In range</span></div><span style="width: 90px; height: 24px; background: #23402E; border-radius: 6px;"></span></div>
+        <span style="color: #AEAEB2; text-align: center;">F S S M T W T repeated on every card</span>
+        <span style="position: absolute; right: 18px; bottom: 30px; background: #B8CCFF; color: #10224D; border-radius: 16px; padding: 10px 14px; font-weight: 600; font-size: 12px;">Ask coach</span>
+        <span style="position: absolute; left: 140px; top: 196px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">8</span>
+        <span style="position: absolute; left: 140px; top: 270px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">9</span>
+        <span style="position: absolute; right: 10px; top: 180px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">10</span>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.4;">
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>8 · Verdicts without targets</strong><span style="background: #FCE8E6; color: #8C1D18; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">High</span></span><span style="color: #3A3A3C;">"Out of range" never shows the range or who set it.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>9 · The wrong thing gets judged</strong><span style="background: #FCE8E6; color: #8C1D18; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">High</span></span><span style="color: #3A3A3C;">REM "above range" invites worry about something no one can act on, while a short night gets the same weight as stage cards.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>10 · Colour carries meaning, axes repeat</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">Green, yellow and purple mean different things per card; the same 7-day axis four times on one screen.</span></li>
+      </ol>
+    </section>
+
+    <section aria-label="Screen 3: Sleep stages and quality" style="display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600;">3 · Stages and sleep quality</h2>
+      <div aria-hidden="true" style="position: relative; height: 560px; border-radius: 28px; background: #151518; padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px; color: #E5E5EA; font-size: 11px;">
+        <div style="display: flex; justify-content: center; padding: 6px 4px;"><span style="font-size: 15px; font-weight: 600;">Premium</span></div>
+        <div style="background: #1E1E24; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 7px;">
+          <span>REM · [time]</span><span style="height: 12px; border-radius: 6px; background: #2C2C33; position: relative;"><span style="position: absolute; left: 22%; width: 10%; height: 100%; background: #BFE6FF; border-radius: 6px;"></span><span style="position: absolute; left: 58%; width: 12%; height: 100%; background: #BFE6FF; border-radius: 6px;"></span></span>
+          <span>Light · [time]</span><span style="height: 12px; border-radius: 6px; background: #2C2C33; position: relative;"><span style="position: absolute; left: 30%; width: 14%; height: 100%; background: #8FB4FF; border-radius: 6px;"></span><span style="position: absolute; left: 70%; width: 22%; height: 100%; background: #8FB4FF; border-radius: 6px;"></span></span>
+          <span>Deep · [time]</span><span style="height: 12px; border-radius: 6px; background: #2C2C33; position: relative;"><span style="position: absolute; left: 40%; width: 12%; height: 100%; background: #9B6BDB; border-radius: 6px;"></span></span>
+          <span style="display: flex; justify-content: space-between; color: #AEAEB2;"><span>Went to bed</span><span>Out of bed</span></span>
+        </div>
+        <div style="background: #1E1E24; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 13px; font-weight: 600;">Sleep quality</span>
+          <span style="display: flex; justify-content: space-between;"><span>Time to sound sleep</span><span style="background: #4D3B12; color: #FFD27A; border-radius: 8px; padding: 1px 6px;">Above range</span></span>
+          <span style="height: 12px; border-radius: 6px; background: #2C2C33; position: relative;"><span style="position: absolute; left: 0; width: 40%; height: 100%; background: #F5B83D; border-radius: 6px;"></span><span style="position: absolute; left: 36%; top: -3px; width: 18px; height: 18px; border-radius: 9px; background: #DADADF;"></span></span>
+          <span style="display: flex; justify-content: space-between;"><span>Sound sleep</span><span style="background: #1E4D2B; color: #9FE0B0; border-radius: 8px; padding: 1px 6px;">In range</span></span>
+          <span style="height: 12px; border-radius: 6px; background: #2C2C33; position: relative;"><span style="position: absolute; left: 0; width: 76%; height: 100%; background: #4CD07D; border-radius: 6px;"></span><span style="position: absolute; left: 72%; top: -3px; width: 18px; height: 18px; border-radius: 9px; background: #DADADF;"></span></span>
+          <span style="display: flex; justify-content: space-between;"><span>Restlessness</span><span style="background: #1E4D2B; color: #9FE0B0; border-radius: 8px; padding: 1px 6px;">In range</span></span>
+          <span style="height: 12px; border-radius: 6px; background: #2C2C33; position: relative;"><span style="position: absolute; left: 0; width: 24%; height: 100%; background: #4CD07D; border-radius: 6px;"></span><span style="position: absolute; left: 20%; top: -3px; width: 18px; height: 18px; border-radius: 9px; background: #DADADF;"></span></span>
+        </div>
+        <span style="position: absolute; right: 18px; bottom: 30px; background: #B8CCFF; color: #10224D; border-radius: 16px; padding: 10px 14px; font-weight: 600; font-size: 12px;">Ask coach</span>
+        <span style="position: absolute; right: 10px; top: 60px; width: 22px; height: 22px; border-radius: 11px; background: #0B7A5E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">G1</span>
+        <span style="position: absolute; right: 10px; top: 292px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">11</span>
+        <span style="position: absolute; left: 4px; top: 330px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">12</span>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.4;">
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>G1 · Stage timeline with bed and wake times</strong><span style="background: #E3F3EE; color: #075C46; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Keep</span></span><span style="color: #3A3A3C;">Clear, and it shows when the night started, which is the actionable part.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>11 · Sliders that look draggable</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">Thumbs on read-only bars promise an interaction that isn't there.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>12 · Metrics with no "so what"</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">Four quality bars, each with its own verdict, and nothing to do about any of them.</span></li>
+      </ol>
+    </section>
+
+    <section aria-label="Screen 4: Nightly AI narrative" style="display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600;">4 · Nightly AI narrative</h2>
+      <div aria-hidden="true" style="position: relative; height: 560px; border-radius: 28px; background: #1A1622; padding: 18px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; color: #E5E5EA; font-size: 12px; line-height: 1.4;">
+        <div style="display: flex; justify-content: center; padding: 2px 4px;"><span style="font-size: 15px; font-weight: 600;">Premium</span></div>
+        <span style="background: #5B3FC4; color: #FFFFFF; border-radius: 10px; padding: 3px 10px; align-self: flex-start; font-weight: 600;">Sleep</span>
+        <span style="font-size: 19px; font-weight: 600; line-height: 1.25;">A short night of sleep with solid restorative stages</span>
+        <span style="color: #C7C7CC;">A late start and early wake-up squeezed total sleep to under 5 hours.</span>
+        <span style="color: #C7C7CC;">Despite the short window, you hit healthy levels of deep and REM sleep. How are your energy levels holding up this morning?</span>
+        <div style="background: #24242A; border-radius: 14px; height: 140px;"></div>
+        <span style="position: absolute; right: 18px; bottom: 30px; background: #B8CCFF; color: #10224D; border-radius: 16px; padding: 10px 14px; font-weight: 600; font-size: 12px;">Ask coach</span>
+        <span style="position: absolute; right: 8px; top: 92px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">13</span>
+        <span style="position: absolute; right: 8px; top: 226px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">14</span>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.4;">
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>13 · Reassures about the wrong thing</strong><span style="background: #FCE8E6; color: #8C1D18; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">High</span></span><span style="color: #3A3A3C;">A night under 5 hours is called "solid" because stage percentages look fine. Evidence says short sleep raises hunger and cuts the fat share of weight lost.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>14 · Ends with an engagement question</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">"How are your energy levels?" pulls the user into the paid chat instead of giving advice.</span></li>
+      </ol>
+    </section>
+
+    <section aria-label="Screen 5: Weekly AI insight" style="display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600;">5 · Weekly AI insight</h2>
+      <div aria-hidden="true" style="position: relative; height: 560px; border-radius: 28px; background: #1A1622; padding: 18px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; color: #E5E5EA; font-size: 12px; line-height: 1.4;">
+        <div style="display: flex; justify-content: center; padding: 2px 4px;"><span style="font-size: 15px; font-weight: 600;">Premium</span></div>
+        <span style="font-size: 19px; font-weight: 600; line-height: 1.25;">Late bedtimes are shaping your weekly recovery pattern</span>
+        <span style="color: #C7C7CC;">Over the past 2 weeks, bedtimes after 2 AM have consistently shortened your overall rest.</span>
+        <span style="color: #C7C7CC;">Keeping your sleep window wider gives your joints maximum time to rebuild between workouts. Would shifting bedtime 15 minutes earlier work tonight?</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+          <div style="background: #111114; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 6px;"><span>Sleep Score</span><span style="font-size: 18px; font-weight: 600;">[score]</span><span style="background: #6B1D12; color: #FFB4A6; border-radius: 8px; padding: 1px 6px; align-self: flex-start;">Poor</span></div>
+          <div style="background: #111114; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 6px;"><span>Main sleep</span><span style="font-size: 14px; font-weight: 600;">[short]</span><span style="background: #4D3B12; color: #FFD27A; border-radius: 8px; padding: 1px 6px; align-self: flex-start;">Goal not met</span></div>
+        </div>
+        <span style="background: #111114; border-radius: 18px; padding: 10px; text-align: center; color: #B8CCFF; font-weight: 600;">Reply</span>
+        <span style="position: absolute; right: 18px; bottom: 30px; background: #B8CCFF; color: #10224D; border-radius: 16px; padding: 10px 14px; font-weight: 600; font-size: 12px;">Ask coach</span>
+        <span style="position: absolute; right: 8px; top: 60px; width: 22px; height: 22px; border-radius: 11px; background: #0B7A5E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">G2</span>
+        <span style="position: absolute; right: 8px; top: 186px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">15</span>
+        <span style="position: absolute; left: 4px; top: 330px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">16</span>
+        <span style="position: absolute; left: 4px; bottom: 84px; width: 22px; height: 22px; border-radius: 11px; background: #B3261E; color: #FFFFFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">17</span>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.4;">
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>G2 · A behaviour and one small change</strong><span style="background: #E3F3EE; color: #075C46; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Keep</span></span><span style="color: #3A3A3C;">"Late bedtimes… 15 minutes earlier" is the right shape for advice: cause, pattern, one step.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>15 · Unsourced claims</strong><span style="background: #FCE8E6; color: #8C1D18; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">High</span></span><span style="color: #3A3A3C;">"Gives your joints maximum time to rebuild" with no evidence shown.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>16 · Judgement labels</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">"Poor" in red and "Goal not met" grade the person instead of describing the night.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 4px;"><span style="display: flex; gap: 8px; align-items: center;"><strong>17 · Two AI entry points</strong><span style="background: #FBEBDD; color: #7A3A00; border-radius: 6px; padding: 1px 6px; font-size: 12px; font-weight: 600;">Medium</span></span><span style="color: #3A3A3C;">"Reply" and "Ask coach" make the chat the destination, not the answer.</span></li>
+      </ol>
+    </section>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+      <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Built for coach engagement</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 1.45; color: #3A3A3C;">The biggest button, the narratives' closing questions and the paywall all point at the AI coach, not at an answer.</p>
+    </div>
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+      <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Everything shown, nothing connected</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 1.45; color: #3A3A3C;">Around twenty metrics, and no single "on track or not, and why".</p>
+    </div>
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+      <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Precision theatre</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 1.45; color: #3A3A3C;">Unreliable estimates look exact and get badges; verdicts like "Poor" and "Out of range" have no stated basis.</p>
+    </div>
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+      <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Empty states that end the road</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 1.45; color: #3A3A3C;">"No data" is never followed by a next step.</p>
+    </div>
+  </div>
+
+  <section aria-label="What Yukta does instead" style="background: #FFFFFF; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 14px;">
+    <h2 style="margin: 0; font-size: 24px; font-weight: 700;">What Yukta does instead</h2>
+    <div role="table" aria-label="Google Health compared with Yukta" style="display: flex; flex-direction: column; font-size: 15px; line-height: 1.4;">
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 8px 0; border-bottom: 2px solid #E5E5EA; font-weight: 600; color: #5E5E63; font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px;"><span role="columnheader">Google Health</span><span role="columnheader">Yukta</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0; border-bottom: 1px solid #E5E5EA;"><span role="cell">Weight, burned and intake on separate cards (1)</span><span role="cell">One weekly answer: trend rate against your goal, intake against target, expenditure learned from your own scale and food log</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0; border-bottom: 1px solid #E5E5EA;"><span role="cell">Watch calories as an exact number with "Goal met" badges (2)</span><span role="cell">No watch "calories burned". Expenditure always as a range, in kcal, formatted for the user's region, never celebrated</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0; border-bottom: 1px solid #E5E5EA;"><span role="cell">"No data" dead ends (3)</span><span role="cell">Every empty state has one action: "No intake yet. Quick add, or connect a food logger."</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0; border-bottom: 1px solid #E5E5EA;"><span role="cell">"Out of range" with no range; REM judged (8, 9)</span><span role="cell">Every verdict shows its target ("40 m under your 7 h target"); sleep stages are never graded</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0; border-bottom: 1px solid #E5E5EA;"><span role="cell">The best insight was bedtime (G2)</span><span role="cell">Bedtime joins the sleep lever in v1: "Bedtime about 2 h later than your target", not just hours slept</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0; border-bottom: 1px solid #E5E5EA;"><span role="cell">Floating coach, two AI entry points, closing questions (6, 14, 17)</span><span role="cell">AI is one inline card, off by default, never floating, never ending in a question</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0; border-bottom: 1px solid #E5E5EA;"><span role="cell">"Poor", "Goal not met", "X kg above goal" (5, 16)</span><span role="cell">Descriptive words ("short night", "behind your pace"); weight as trend and rate, never "above goal"</span></div>
+      <div role="row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 10px 0;"><span role="cell">"Gives your joints time to rebuild" (15)</span><span role="cell">Every "Why it matters" claim names its study and evidence strength, and links to the evidence register</span></div>
+    </div>
+  </section>
+
+  <footer style="font-size: 12px; line-height: 1.5; color: #5E5E63;">Sources: Google Health Help Center (changes in the app); TechRadar, Kotaku, Android Authority, 9to5Google, PiunikaWeb, Shopifreaks coverage of the May 2026 switch; Unstar review analysis (Google Play rating); Germini et al. 2022, JMIR (wearable calorie accuracy). Full links in the repo: docs/yukta/strategy/competitor-review-google-health.md.</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1680,"height":1960}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

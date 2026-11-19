@@ -1,7 +1,7 @@
 # Yukta: design brief
 
-The written spec for the Claude Design prototype. Boards will live in `design/yukta/` once the
-first canvas is synced. Scope and reasons: [../strategy/product-blueprint.md](../strategy/product-blueprint.md).
+The written spec for the Claude Design prototype. The first canvas (interactive prototype plus two
+competitor research boards) is in [`design/yukta/`](../../../design/yukta/README.md). Scope and reasons: [../strategy/product-blueprint.md](../strategy/product-blueprint.md).
 Every number's formula: [../engineering/energy-spec.md](../engineering/energy-spec.md). Every
 claim's evidence: [../strategy/science-evidence.md](../strategy/science-evidence.md).
 

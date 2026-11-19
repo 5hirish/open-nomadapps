@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yukta: this week</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0B7A5E}a:hover{color:#075C46}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; background: {{t.bg}}; color: {{t.label}}; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.3;">
+
+<sc-if value="{{isWeek}}" hint-placeholder-val="{{true}}">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 56px 16px 24px; display: flex; flex-direction: column; gap: 16px;">
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;">
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+      <span style="font-size: 15px; color: {{t.sub}};">{{d.range}}</span>
+      <h1 style="margin: 0; font-size: 34px; font-weight: 700; letter-spacing: 0.2px;">This week</h1>
+    </div>
+    <button type="button" aria-label="About Yukta" onClick="{{goAbout}}" style="width: 44px; height: 44px; border: none; border-radius: 22px; background: {{t.card}}; color: {{t.accent}}; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><path d="M12 7.5v.01"></path></svg>
+    </button>
+  </div>
+
+  <sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+    <div role="status" style="background: {{t.accentBg}}; color: {{t.accent}}; border-radius: 12px; padding: 12px 14px; font-size: 15px; font-weight: 500;">{{toast}}</div>
+  </sc-if>
+
+  <section aria-label="Status" style="background: {{t.card}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="display: inline-flex; align-items: center; gap: 6px; background: {{statusBg}}; color: {{statusFg}}; border-radius: 999px; padding: 6px 12px; font-size: 15px; font-weight: 600;">
+        <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="currentColor"></circle></svg>
+        {{d.status}}
+      </span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+      <span style="font-size: 22px; font-weight: 600;">{{rateMain}}</span>
+      <span style="font-size: 15px; color: {{t.sub}};">{{rateSub}}</span>
+    </div>
+    <div style="border-top: 1px solid {{t.sep}}; padding-top: 10px; font-size: 15px; color: {{t.sub}};">{{d.checkin}}</div>
+  </section>
+
+  <section aria-label="Energy" style="background: {{t.card}}; border-radius: 14px; padding: 4px 16px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid {{t.sep}};">
+      <span style="font-size: 17px;">Eating</span>
+      <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; text-align: right;">
+        <span style="font-size: 17px; font-weight: 600;">{{eatMain}}</span>
+        <span style="font-size: 13px; color: {{t.sub}};">{{eatSub}}</span>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0;">
+      <span style="font-size: 17px;">Burning</span>
+      <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; text-align: right;">
+        <span style="font-size: 17px; font-weight: 600;">{{burnMain}}</span>
+        <span style="font-size: 13px; color: {{t.sub}};">{{burnSub}}</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Levers" style="display: flex; flex-direction: column; gap: 8px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px;">
+      <h2 style="margin: 0; font-size: 20px; font-weight: 600;">Levers</h2>
+      <span style="font-size: 13px; color: {{t.sub}};">{{leverSummary}}</span>
+    </div>
+    <div style="background: {{t.card}}; border-radius: 14px; padding: 0 16px;">
+      <sc-for list="{{levers}}" as="lv" hint-placeholder-count="4">
+        <sc-if value="{{lv.isSleep}}" hint-placeholder-val="{{false}}">
+          <button type="button" onClick="{{goSleep}}" style="width: 100%; border: none; background: transparent; color: inherit; font: inherit; text-align: left; padding: 12px 0; border-bottom: {{lv.border}}; display: flex; align-items: center; gap: 12px; cursor: pointer;">
+            <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;">
+              <div style="display: flex; justify-content: space-between; gap: 8px;">
+                <span style="font-size: 17px;">{{lv.name}}</span>
+                <span style="font-size: 17px; font-weight: 600;">{{lv.main}}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 13px;">
+                <span style="color: {{lv.flagColor}}; font-weight: 600;">{{lv.flag}}</span>
+                <span style="color: {{t.sub}};">{{lv.sub}}</span>
+              </div>
+            </div>
+            <svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{t.sub}}; flex-shrink: 0;"><path d="M1.5 1.5l6 6-6 6"></path></svg>
+          </button>
+        </sc-if>
+        <sc-if value="{{lv.notSleep}}" hint-placeholder-val="{{true}}">
+          <div style="padding: 12px 0; border-bottom: {{lv.border}}; display: flex; flex-direction: column; gap: 2px; margin-right: 21px;">
+            <div style="display: flex; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 17px;">{{lv.name}}</span>
+              <span style="font-size: 17px; font-weight: 600;">{{lv.main}}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 13px;">
+              <span style="color: {{lv.flagColor}}; font-weight: 600;">{{lv.flag}}</span>
+              <span style="color: {{t.sub}};">{{lv.sub}}</span>
+            </div>
+          </div>
+        </sc-if>
+      </sc-for>
+    </div>
+    <span style="font-size: 13px; color: {{t.sub}}; padding: 0 4px;">{{weighedLine}}</span>
+  </section>
+</div>
+<div style="flex-shrink: 0; display: flex; gap: 12px; padding: 12px 16px 34px; background: {{t.bar}}; border-top: 1px solid {{t.sep}};">
+  <button type="button" onClick="{{goQuick}}" style="flex-grow: 1; min-height: 50px; border: none; border-radius: 14px; background: {{t.accent}}; color: {{t.onAccent}}; font: inherit; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+    Quick add
+  </button>
+  <button type="button" onClick="{{goWeigh}}" style="flex-grow: 1; min-height: 50px; border: none; border-radius: 14px; background: {{t.accentBg}}; color: {{t.accent}}; font: inherit; font-weight: 600; cursor: pointer;">Weigh in</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isQuick}}" hint-placeholder-val="{{false}}">
+<div style="flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 52px 8px 8px; background: {{t.bar}}; border-bottom: 1px solid {{t.sep}};">
+  <button type="button" onClick="{{goWeek}}" style="min-width: 64px; min-height: 44px; border: none; background: transparent; color: {{t.accent}}; font: inherit; cursor: pointer;">Done</button>
+  <h1 style="margin: 0; font-size: 17px; font-weight: 600;">Quick add</h1>
+  <button type="button" onClick="{{addEntry}}" style="min-width: 64px; min-height: 44px; border: none; background: transparent; color: {{t.accent}}; font: inherit; font-weight: 600; cursor: pointer;">Add</button>
+</div>
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+  <div role="group" aria-label="Day" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; background: {{t.field}}; border-radius: 10px; padding: 2px;">
+    <button type="button" aria-pressed="{{isToday}}" onClick="{{pickToday}}" style="min-height: 36px; border: none; border-radius: 8px; background: {{todayBg}}; color: {{t.label}}; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">Today</button>
+    <button type="button" aria-pressed="{{isYesterday}}" onClick="{{pickYesterday}}" style="min-height: 36px; border: none; border-radius: 8px; background: {{yesterdayBg}}; color: {{t.label}}; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">Yesterday</button>
+  </div>
+
+  <div style="background: {{t.card}}; border-radius: 14px; padding: 0 16px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; border-bottom: 1px solid {{t.sep}};">
+      <label for="qa-kcal" style="font-size: 17px;">Calories</label>
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <input id="qa-kcal" type="number" inputmode="numeric" placeholder="0" value="{{kcal}}" onChange="{{onKcal}}" style="width: 110px; border: none; background: transparent; color: {{t.label}}; font: inherit; font-size: 22px; font-weight: 600; text-align: right; outline-offset: 4px;">
+        <span style="color: {{t.sub}}; font-size: 15px;">kcal</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; border-bottom: 1px solid {{t.sep}};">
+      <label for="qa-protein" style="font-size: 17px;">Protein</label>
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <input id="qa-protein" type="number" inputmode="numeric" placeholder="0" value="{{protein}}" onChange="{{onProtein}}" style="width: 110px; border: none; background: transparent; color: {{t.label}}; font: inherit; font-size: 22px; font-weight: 600; text-align: right; outline-offset: 4px;">
+        <span style="color: {{t.sub}}; font-size: 15px; width: 28px;">g</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px;">
+      <label for="qa-label" style="font-size: 17px;">Label</label>
+      <input id="qa-label" type="text" placeholder="Optional" value="{{label}}" onChange="{{onLabel}}" style="flex-grow: 1; min-width: 0; border: none; background: transparent; color: {{t.label}}; font: inherit; text-align: right; outline-offset: 4px;">
+    </div>
+  </div>
+
+  <sc-if value="{{hasQaMsg}}" hint-placeholder-val="{{false}}">
+    <div role="status" style="background: {{qaMsgBg}}; color: {{qaMsgFg}}; border-radius: 12px; padding: 12px 14px; font-size: 15px; font-weight: 500;">{{qaMsg}}</div>
+  </sc-if>
+
+  <sc-if value="{{hungerOn}}" hint-placeholder-val="{{true}}">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <span id="hunger-label" style="font-size: 13px; color: {{t.sub}}; padding: 0 4px; text-transform: uppercase; letter-spacing: 0.4px;">How hungry are you? (optional)</span>
+      <div role="group" aria-labelledby="hunger-label" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px;">
+        <sc-for list="{{hungerLevels}}" as="h" hint-placeholder-count="5">
+          <button type="button" aria-pressed="{{h.selected}}" aria-label="{{h.aria}}" onClick="{{h.pick}}" style="min-height: 48px; border: 2px solid {{h.ring}}; border-radius: 12px; background: {{t.card}}; color: {{t.label}}; font: inherit; font-weight: 600; cursor: pointer;">{{h.n}}</button>
+        </sc-for>
+      </div>
+      <span style="font-size: 13px; color: {{t.sub}}; padding: 0 4px;">1 is not hungry, 5 is very hungry. Kept on this iPhone only.</span>
+    </div>
+  </sc-if>
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <span style="font-size: 13px; color: {{t.sub}}; padding: 0 4px; text-transform: uppercase; letter-spacing: 0.4px;">{{entriesHeading}}</span>
+    <div style="background: {{t.card}}; border-radius: 14px; padding: 0 16px;">
+      <sc-for list="{{entries}}" as="e" hint-placeholder-count="2">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid {{t.sep}};">
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 17px;">{{e.label}}</span>
+            <span style="font-size: 13px; color: {{t.sub}};">from {{e.source}}</span>
+          </div>
+          <span style="font-size: 15px; font-weight: 600; text-align: right;">{{e.line}}</span>
+        </div>
+      </sc-for>
+      <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; font-size: 15px;">
+        <span style="color: {{t.sub}};">Total</span>
+        <span style="font-weight: 600;">{{entriesTotal}}</span>
+      </div>
+    </div>
+    <span style="font-size: 13px; color: {{t.sub}}; padding: 0 4px;">Entries from every app that writes to Apple Health are counted, so you can spot double logging here.</span>
+  </div>
+
+  <div style="background: {{t.card}}; border-radius: 14px; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+      <span id="complete-label" style="font-size: 17px;">Mark today complete</span>
+      <button type="button" aria-labelledby="complete-label" aria-pressed="{{complete}}" onClick="{{toggleComplete}}" style="width: 51px; height: 31px; flex-shrink: 0; border: none; border-radius: 16px; background: {{switchBg}}; cursor: pointer; padding: 2px; display: flex; justify-content: {{switchJustify}};">
+        <span style="width: 27px; height: 27px; border-radius: 14px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.25);"></span>
+      </button>
+    </div>
+    <span style="font-size: 13px; color: {{t.sub}};">Days well below your usual intake are left out of the estimate unless you mark them complete, so a half-logged day never reads as a huge deficit.</span>
+  </div>
+  <span style="font-size: 13px; color: {{t.sub}}; padding: 0 4px 16px;">Entries you add are saved to Apple Health.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isWeigh}}" hint-placeholder-val="{{false}}">
+<div style="flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 52px 8px 8px; background: {{t.bar}}; border-bottom: 1px solid {{t.sep}};">
+  <button type="button" onClick="{{goWeek}}" style="min-width: 64px; min-height: 44px; border: none; background: transparent; color: {{t.accent}}; font: inherit; cursor: pointer;">Cancel</button>
+  <h1 style="margin: 0; font-size: 17px; font-weight: 600;">Weigh in</h1>
+  <button type="button" onClick="{{saveWeight}}" style="min-width: 64px; min-height: 44px; border: none; background: transparent; color: {{t.accent}}; font: inherit; font-weight: 600; cursor: pointer;">Save</button>
+</div>
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 40px 16px 16px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+  <label for="wi-weight" style="font-size: 15px; color: {{t.sub}};">This morning</label>
+  <div style="display: flex; align-items: baseline; gap: 8px;">
+    <input id="wi-weight" type="number" inputmode="decimal" step="0.1" value="{{weight}}" onChange="{{onWeight}}" style="width: 180px; border: none; background: transparent; color: {{t.label}}; font: inherit; font-size: 64px; font-weight: 700; text-align: right; outline-offset: 6px;">
+    <span style="font-size: 28px; color: {{t.sub}};">kg</span>
+  </div>
+  <sc-if value="{{hasWeighErr}}" hint-placeholder-val="{{false}}">
+    <div role="status" style="background: {{t.warnBg}}; color: {{t.warn}}; border-radius: 12px; padding: 10px 14px; font-size: 15px; font-weight: 500;">{{weighErr}}</div>
+  </sc-if>
+  <span style="font-size: 15px; color: {{t.sub}};">{{weighedLine}}</span>
+  <div style="background: {{t.card}}; border-radius: 14px; padding: 14px 16px; font-size: 15px; color: {{t.sub}}; line-height: 1.4; align-self: stretch;">Daily weight moves with water, salt and food in your stomach. Yukta follows the trend, so one high morning changes nothing. About four weigh-ins a week is enough.</div>
+  <span style="font-size: 13px; color: {{t.sub}};">Saved to Apple Health.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isSleep}}" hint-placeholder-val="{{false}}">
+<div style="flex-shrink: 0; display: flex; align-items: center; padding: 52px 8px 8px; background: {{t.bar}};">
+  <button type="button" onClick="{{goWeek}}" style="min-height: 44px; border: none; background: transparent; color: {{t.accent}}; font: inherit; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 0 8px;">
+    <svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2L2 9l7 7"></path></svg>
+    This week
+  </button>
+</div>
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 4px 16px 32px; display: flex; flex-direction: column; gap: 16px;">
+  <h1 style="margin: 0; font-size: 34px; font-weight: 700;">Sleep</h1>
+  <section aria-label="Last 4 weeks" style="background: {{t.card}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+      <span style="font-size: 22px; font-weight: 600;">{{sleepMain}}</span>
+      <span style="font-size: 15px; color: {{sleepSubColor}}; font-weight: 500;">{{sleepSub}}</span>
+    </div>
+    <div role="img" aria-label="{{chartLabel}}" style="position: relative; height: 140px; display: grid; grid-template-columns: repeat(28, minmax(0, 1fr)); gap: 3px; align-items: end;">
+      <sc-for list="{{bars}}" as="b" hint-placeholder-count="28">
+        <div aria-hidden="true" style="height: {{b.h}}; background: {{b.c}}; border-radius: 3px 3px 0 0;"></div>
+      </sc-for>
+      <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: {{targetPct}}; border-top: 2px dashed {{t.sub}};"></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; font-size: 13px; color: {{t.sub}};">
+      <span>4 weeks ago</span>
+      <span>{{targetLegend}}</span>
+      <span>Last night</span>
+    </div>
+  </section>
+
+  <section aria-label="Why it matters" style="background: {{t.card}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 600;">Why it matters</h2>
+    <p style="margin: 0; font-size: 15px; line-height: 1.45;">In a 14-day calorie deficit, people given 5.5 hours of sleep lost about the same weight as with 8.5 hours, but far less of it was fat: the fat share fell by 55%.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: {{t.sub}};">
+      <span style="background: {{t.field}}; color: {{t.label}}; border-radius: 6px; padding: 3px 8px; font-weight: 600;">Moderate: a small trial</span>
+      <span>Nedeltcheva et al., 2010</span>
+    </div>
+    <p style="margin: 0; font-size: 15px; line-height: 1.45;">After short sleep, hunger rose about 24%, with ghrelin (the hunger hormone) up and leptin (the fullness hormone) down. Yukta can't measure hormones; sleep is the lever that moves them.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: {{t.sub}};">
+      <span style="background: {{t.field}}; color: {{t.label}}; border-radius: 6px; padding: 3px 8px; font-weight: 600;">Moderate: a small trial</span>
+      <span>Spiegel et al., 2004</span>
+    </div>
+    <a href="https://github.com/5hirish/open-nomadapps/blob/main/docs/yukta/strategy/science-evidence.md" style="font-size: 15px; font-weight: 500; color: {{t.accent}};">Read the evidence register</a>
+  </section>
+  <span style="font-size: 13px; color: {{t.sub}}; padding: 0 4px;">Sleep comes from Apple Health (here: Fitbit Air via Google Health).</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isAbout}}" hint-placeholder-val="{{false}}">
+<div style="flex-shrink: 0; display: flex; align-items: center; padding: 52px 8px 8px; background: {{t.bar}};">
+  <button type="button" onClick="{{goWeek}}" style="min-height: 44px; border: none; background: transparent; color: {{t.accent}}; font: inherit; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 0 8px;">
+    <svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2L2 9l7 7"></path></svg>
+    This week
+  </button>
+</div>
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 4px 16px 32px; display: flex; flex-direction: column; gap: 16px;">
+  <div style="display: flex; flex-direction: column; gap: 4px;">
+    <h1 style="margin: 0; font-size: 34px; font-weight: 700;">Yukta</h1>
+    <span style="font-size: 17px; color: {{t.sub}};"><span lang="sa" style="font-family: 'Noto Sans Devanagari', 'Kohinoor Devanagari', sans-serif;">युक्त</span> · balanced, moderate</span>
+  </div>
+  <section aria-label="Bhagavad Gītā 6.17" style="background: {{t.card}}; border-radius: 14px; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px;">
+    <p lang="sa" style="margin: 0; font-family: 'Noto Sans Devanagari', 'Kohinoor Devanagari', sans-serif; font-size: 19px; line-height: 1.6; font-weight: 600;">युक्ताहारविहारस्य युक्तचेष्टस्य कर्मसु ।<br>युक्तस्वप्नावबोधस्य योगो भवति दुःखहा ॥</p>
+    <p lang="sa-Latn" style="margin: 0; font-size: 15px; line-height: 1.5; font-style: italic; color: {{t.sub}};">yuktāhāra-vihārasya yukta-ceṣṭasya karmasu<br>yukta-svapnāvabodhasya yogo bhavati duḥkha-hā</p>
+    <p style="margin: 0; font-size: 16px; line-height: 1.45;">For one who is moderate in eating and recreation, measured in effort at work, and regulated in sleep and waking, yoga becomes the remover of sorrow.</p>
+    <span style="font-size: 13px; color: {{t.sub}};">Bhagavad Gītā 6.17</span>
+  </section>
+  <section aria-label="Promises" style="background: {{t.card}}; border-radius: 14px; padding: 0 16px;">
+    <div style="padding: 12px 0; border-bottom: 1px solid {{t.sep}}; font-size: 16px;">Free. No account, no subscription, no ads.</div>
+    <div style="padding: 12px 0; border-bottom: 1px solid {{t.sep}}; font-size: 16px;">Nothing leaves your iPhone.</div>
+    <div style="padding: 12px 0; border-bottom: 1px solid {{t.sep}}; font-size: 16px;">AI is off unless you turn it on, and runs on the device.</div>
+    <div style="padding: 12px 0; font-size: 16px;">Every recommendation cites its evidence.</div>
+  </section>
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 4px; font-size: 15px;">
+    <a href="https://github.com/5hirish/open-nomadapps/blob/main/docs/yukta/strategy/naming.md" style="color: {{t.accent}}; font-weight: 500;">Why this name</a>
+    <a href="https://github.com/5hirish/open-nomadapps" style="color: {{t.accent}}; font-weight: 500;">Open source on GitHub (AGPL-3.0)</a>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"scenario":{"editor":"enum","options":["on-track","sleep-off","learning"],"default":"sleep-off","section":"Fixture"},"hideNumbers":{"editor":"boolean","default":false,"section":"Fixture"},"hungerRating":{"editor":"boolean","default":true,"section":"Fixture"},"dark":{"editor":"boolean","default":false,"section":"Appearance"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { screen: 'week', toast: '', kcal: '', protein: '', label: '', day: 'today', complete: false, hunger: 0, added: [], qaMsg: '', qaErr: false, weight: '79.6', weighErr: '', weighedExtra: 0 };
+  }
+
+  renderVals() {
+    const scenario = this.props.scenario ?? 'sleep-off';
+    const hide = this.props.hideNumbers ?? false;
+    const dark = this.props.dark ?? false;
+    const hungerOn = this.props.hungerRating ?? true;
+    const s = this.state;
+    const fmt = (n) => Number(n).toLocaleString('en-US');
+
+    const t = dark ? {
+      bg: '#000000', card: '#1C1C1E', bar: '#121214', label: '#FFFFFF', sub: '#AEAEB2', sep: '#38383A',
+      accent: '#3DD68C', onAccent: '#00261A', accentBg: '#12352A', warn: '#FFB066', warnBg: '#3A2A1A',
+      field: '#2C2C2E', barOn: '#3DD68C', barOff: '#FFB066', neutralBg: '#2C2C2E', neutralFg: '#E5E5EA'
+    } : {
+      bg: '#F2F2F7', card: '#FFFFFF', bar: '#F9F9FB', label: '#000000', sub: '#6C6C70', sep: '#E5E5EA',
+      accent: '#0B7A5E', onAccent: '#FFFFFF', accentBg: '#E3F3EE', warn: '#A84F00', warnBg: '#FBEBDD',
+      field: '#E9E9EE', barOn: '#2E9C7A', barOff: '#D9822B', neutralBg: '#E9E9EE', neutralFg: '#3A3A3C'
+    };
+
+    const nights = {
+      'on-track': [445,430,460,470,415,440,455,465,425,450,480,435,445,460,440,470,430,455,465,445,420,450,460,475,440,455,445,465],
+      'sleep-off': [430,410,395,420,380,405,390,370,400,385,365,395,410,375,390,360,385,370,395,380,355,390,375,365,380,370,395,360],
+      'learning': [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,425,410,440,395,430,415,450,405,435]
+    };
+
+    const data = {
+      'on-track': {
+        range: 'Nov 16–22', status: 'On track', tone: 'good',
+        rate: '−0.4 kg a week', rateSub: 'Your goal: −0.4 kg a week (0.5% of your weight)', rateWord: 'Losing at the pace you chose',
+        checkin: 'Targets update Sunday, your check-in day.',
+        eat: '2,050 kcal a day', eatSub: 'target 2,000', eatWord: 'Close to your target',
+        burn: '~2,450 kcal a day', burnSub: '2,330–2,570 · learned from your data', burnWord: 'Learned from your data',
+        weighed: 5,
+        levers: [
+          { key: 'sleep', name: 'Sleep', main: '7 h 25 m avg', sub: 'target 7 h', off: false },
+          { key: 'protein', name: 'Protein', main: '5 of 7 days', sub: 'at 130 g', off: false },
+          { key: 'strength', name: 'Strength', main: '2 sessions', sub: 'aim for 2', off: false },
+          { key: 'steps', name: 'Steps', main: '8,100 a day', sub: 'your normal', off: false }
+        ]
+      },
+      'sleep-off': {
+        range: 'Nov 16–22', status: 'Behind', tone: 'warn',
+        rate: '−0.1 kg a week', rateSub: 'Your goal: −0.4 kg a week (0.5% of your weight)', rateWord: 'Losing slower than the pace you chose',
+        checkin: 'Targets update Sunday, your check-in day.',
+        eat: '2,120 kcal a day', eatSub: 'target 2,000', eatWord: 'A little over your target',
+        burn: '~2,430 kcal a day', burnSub: '2,300–2,560 · learned from your data', burnWord: 'Learned from your data',
+        weighed: 4,
+        levers: [
+          { key: 'sleep', name: 'Sleep', main: '6 h 20 m avg', sub: '40 m under target', off: true, why: 'Likely making it harder' },
+          { key: 'protein', name: 'Protein', main: '3 of 7 days', sub: 'at 130 g', off: true, why: 'Below target' },
+          { key: 'strength', name: 'Strength', main: '1 session', sub: 'aim for 2', off: true, why: 'One short' },
+          { key: 'steps', name: 'Steps', main: '7,900 a day', sub: 'your normal', off: false }
+        ]
+      },
+      'learning': {
+        range: 'Nov 16–22', status: 'Learning your numbers', tone: 'neutral',
+        rate: 'Day 9', rateSub: '5 more logged days to learn what you burn', rateWord: '5 more logged days to learn what you burn',
+        checkin: 'Until then, targets use a starting estimate.',
+        eat: '2,000 kcal a day', eatSub: 'starting target 2,100', eatWord: 'Under your starting target',
+        burn: '~2,500 kcal a day', burnSub: '2,200–2,800 · starting estimate', burnWord: 'Starting estimate',
+        weighed: 3,
+        levers: [
+          { key: 'sleep', name: 'Sleep', main: '7 h 5 m avg', sub: 'target 7 h', off: false },
+          { key: 'protein', name: 'Protein', main: '4 of 7 days', sub: 'at 130 g', off: false },
+          { key: 'strength', name: 'Strength', main: '2 sessions', sub: 'aim for 2', off: false },
+          { key: 'steps', name: 'Steps', main: 'Learning', sub: 'your normal, after 14 days', off: false }
+        ]
+      }
+    }[scenario] || null;
+    const d = data;
+
+    const tones = {
+      good: { bg: t.accentBg, fg: t.accent },
+      warn: { bg: t.warnBg, fg: t.warn },
+      neutral: { bg: t.neutralBg, fg: t.neutralFg }
+    };
+    const tone = tones[d.tone];
+
+    const lv = d.levers.slice().sort((a, b) => (b.off ? 1 : 0) - (a.off ? 1 : 0));
+    const offCount = lv.filter((x) => x.off).length;
+    const levers = lv.map((x, i) => ({
+      name: x.name,
+      main: hide ? (x.off ? 'Off' : 'In range') : x.main,
+      sub: hide ? (x.off ? 'Tap for why' : '') : x.sub,
+      flag: x.off ? (x.why || 'Off') : (scenario === 'learning' ? '' : 'In range'),
+      flagColor: x.off ? t.warn : t.accent,
+      isSleep: x.key === 'sleep',
+      notSleep: x.key !== 'sleep',
+      border: i === lv.length - 1 ? 'none' : '1px solid ' + t.sep
+    }));
+
+    const weighed = Math.min(7, d.weighed + s.weighedExtra);
+
+    const baseEntries = {
+      today: [
+        { label: 'Breakfast', kcal: 520, protein: 32, source: 'Fud AI' },
+        { label: 'Lunch', kcal: 780, protein: 41, source: 'MyFitnessPal' }
+      ],
+      yesterday: [
+        { label: 'Breakfast', kcal: 480, protein: 28, source: 'Fud AI' },
+        { label: 'Lunch', kcal: 710, protein: 38, source: 'Fud AI' },
+        { label: 'Dinner', kcal: 860, protein: 45, source: 'Yukta' }
+      ]
+    };
+    const dayEntries = baseEntries[s.day].concat(s.added.filter((e) => e.day === s.day));
+    const entries = dayEntries.map((e) => ({ label: e.label, source: e.source, line: fmt(e.kcal) + ' kcal · ' + e.protein + ' g' }));
+    const totalK = dayEntries.reduce((a, e) => a + e.kcal, 0);
+    const totalP = dayEntries.reduce((a, e) => a + e.protein, 0);
+
+    const n = nights[scenario];
+    const maxMin = 540, targetMin = 420;
+    const bars = n.map((m) => ({
+      h: m ? Math.round((m / maxMin) * 100) + '%' : '0%',
+      c: m >= targetMin - 15 ? t.barOn : t.barOff
+    }));
+    const last7 = n.slice(-7).filter((m) => m > 0);
+    const avg = Math.round(last7.reduce((a, m) => a + m, 0) / last7.length);
+    const under = last7.filter((m) => m < targetMin - 15).length;
+    const hm = (m) => Math.floor(m / 60) + ' h ' + (m % 60) + ' m';
+    const sleepOff = avg < targetMin - 30;
+
+    const go = (screen) => () => this.setState({ screen, toast: '', qaMsg: '', weighErr: '' });
+
+    return {
+      t, d,
+      isWeek: s.screen === 'week', isQuick: s.screen === 'quick', isWeigh: s.screen === 'weigh',
+      isSleep: s.screen === 'sleep', isAbout: s.screen === 'about',
+      goWeek: go('week'), goQuick: go('quick'), goWeigh: go('weigh'), goSleep: go('sleep'), goAbout: go('about'),
+      hasToast: !!s.toast, toast: s.toast,
+      statusBg: tone.bg, statusFg: tone.fg,
+      rateMain: hide ? d.rateWord : d.rate,
+      rateSub: hide ? 'Numbers are hidden. Turn them back on in Settings.' : d.rateSub,
+      eatMain: hide ? d.eatWord : d.eat, eatSub: hide ? '' : d.eatSub,
+      burnMain: hide ? d.burnWord : d.burn, burnSub: hide ? '' : d.burnSub,
+      levers,
+      leverSummary: offCount === 0 ? 'All in range' : offCount + ' off this week',
+      weighedLine: weighed + ' of 7 days weighed this week',
+
+      isToday: s.day === 'today', isYesterday: s.day === 'yesterday',
+      todayBg: s.day === 'today' ? t.card : 'transparent',
+      yesterdayBg: s.day === 'yesterday' ? t.card : 'transparent',
+      pickToday: () => this.setState({ day: 'today', qaMsg: '' }),
+      pickYesterday: () => this.setState({ day: 'yesterday', qaMsg: '' }),
+      kcal: s.kcal, protein: s.protein, label: s.label,
+      onKcal: (e) => this.setState({ kcal: e.target.value }),
+      onProtein: (e) => this.setState({ protein: e.target.value }),
+      onLabel: (e) => this.setState({ label: e.target.value }),
+      addEntry: () => {
+        const k = parseInt(s.kcal, 10);
+        if (!k || k <= 0) { this.setState({ qaMsg: 'Enter calories to add an entry.', qaErr: true }); return; }
+        const p = parseInt(s.protein, 10) || 0;
+        const lbl = s.label.trim() || 'Quick add';
+        this.setState({
+          added: s.added.concat([{ label: lbl, kcal: k, protein: p, source: 'Yukta', day: s.day }]),
+          kcal: '', protein: '', label: '', qaErr: false,
+          qaMsg: 'Added ' + fmt(k) + ' kcal to ' + s.day + '. Saved to Apple Health.'
+        });
+      },
+      hasQaMsg: !!s.qaMsg, qaMsg: s.qaMsg,
+      qaMsgBg: s.qaErr ? t.warnBg : t.accentBg, qaMsgFg: s.qaErr ? t.warn : t.accent,
+      hungerOn,
+      hungerLevels: [1, 2, 3, 4, 5].map((v) => ({
+        n: String(v),
+        aria: 'Hunger ' + v + ' of 5',
+        selected: s.hunger === v,
+        ring: s.hunger === v ? t.accent : t.sep,
+        pick: () => this.setState({ hunger: s.hunger === v ? 0 : v })
+      })),
+      entriesHeading: s.day === 'today' ? 'Today so far' : 'Yesterday',
+      entries,
+      entriesTotal: fmt(totalK) + ' kcal · ' + totalP + ' g protein',
+      complete: s.complete,
+      toggleComplete: () => this.setState({ complete: !s.complete }),
+      switchBg: s.complete ? t.barOn : (dark ? '#39393D' : '#E9E9EB'),
+      switchJustify: s.complete ? 'flex-end' : 'flex-start',
+
+      weight: s.weight,
+      onWeight: (e) => this.setState({ weight: e.target.value, weighErr: '' }),
+      saveWeight: () => {
+        const w = parseFloat(s.weight);
+        if (!w || w < 25 || w > 350) { this.setState({ weighErr: 'Enter a weight between 25 and 350 kg.' }); return; }
+        this.setState({ screen: 'week', weighedExtra: s.weighedExtra + 1, toast: 'Weigh-in saved: ' + w.toFixed(1) + ' kg. Your trend updates on its own.' });
+      },
+      hasWeighErr: !!s.weighErr, weighErr: s.weighErr,
+
+      bars,
+      targetPct: Math.round((targetMin / maxMin) * 100) + '%',
+      sleepMain: hide ? (sleepOff ? 'Under your target' : 'Around your target') : hm(avg) + ' a night, last 7 days',
+      sleepSub: hide ? '' : (under === 0 ? 'Every night near your 7 h target' : under + ' of the last 7 nights under your 7 h target'),
+      sleepSubColor: under >= 4 ? t.warn : t.sub,
+      targetLegend: hide ? 'Dashed line: your target' : 'Dashed line: 7 h target',
+      chartLabel: 'Sleep, last 4 weeks. Last 7 nights averaged ' + hm(avg) + ', ' + under + ' of them under the 7 hour target.'
+    };
+  }
+}
+</script>
+</body>
+</html>

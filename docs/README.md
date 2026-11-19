@@ -15,6 +15,8 @@ Every decision behind open-nomadapps, written so a stranger can follow it.
 | Screens, copy rules and the Claude Design prompt | [yukta/design/design-brief.md](yukta/design/design-brief.md) |
 | Architecture, HealthKit types, build order | [yukta/engineering/engineering-blueprint.md](yukta/engineering/engineering-blueprint.md) |
 | The name: what Yukta means, Bhagavad Gita 6.16–6.17, Charaka Samhita | [yukta/strategy/naming.md](yukta/strategy/naming.md) |
+| Competitor reviews: Google Health, Gentler Streak | [yukta/strategy/competitor-review-google-health.md](yukta/strategy/competitor-review-google-health.md), [yukta/strategy/competitor-review-gentler-streak.md](yukta/strategy/competitor-review-gentler-streak.md) |
+| Interactive prototype and research boards | [../design/yukta/](../design/yukta/README.md) |
 | Launch plan | [yukta/gtm/launch-plan.md](yukta/gtm/launch-plan.md) |
 
 ## Not verified yet
